@@ -1,5 +1,7 @@
 ---
 - hosts: vm2
+  become: yes
+  become_user: root
   vars:
     mongoDB_Port: 4230
 
@@ -7,11 +9,8 @@
     - name: Checking if I can connect to the server.
       ping:
     - name: Adding MongoDB repository for CentOS
-      become: yes
-      become_user: root
       copy: src="mongorepo.repo" dest="/etc/yum.repos.d/mongodb-org-4.2.repo"
     - name: Installing MongoDB
-      become: yes
       yum: name=mongodb-org state=present
 
       
