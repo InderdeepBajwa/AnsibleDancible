@@ -5,6 +5,7 @@
 
   tasks:
     - name: Adding MongoDB repository for CentOS
+      become: yes
       copy: src="mongorepo.repo" dest="/etc/yum.repos.d/mongodb-org-4.2.repo"
     - name: Checking if I can connect to the server.
       ping:
