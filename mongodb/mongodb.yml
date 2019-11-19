@@ -15,7 +15,7 @@
       ping:
     - name: Installing MongoDB
       become: yes
-      yum: name=mongodb-org state=installed
+      yum: name=mongodb-org
 
       
 
