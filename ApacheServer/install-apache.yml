@@ -1,0 +1,7 @@
+---
+- hosts: vm1
+  tasks:
+    - name: Checking if I can connect to the server.
+      ping:
+    - name: Installing Apache (httpd)
+      yum: name=httpd state=latest
