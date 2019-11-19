@@ -8,8 +8,6 @@
         releaseVer: 8Server
         dbVersion: 4.2
       yum: name="https://repo.mongodb.org/yum/redhat/{{ releasever }}/mongodb-org/4.2/x86_64/"
-      gpgcheck: yes
-      gpgkey: https://www.mongodb.org/static/pgp/server-4.2.asc
     - name: Checking if I can connect to the server.
       ping:
     - name: Installing MongoDB
