@@ -4,7 +4,11 @@
     mongoDB_Port: 4230
   tasks:
     - name: Adding MongoDB repository
-      yum: name="https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/"
+      vars:
+        releaseVer: 8Server
+        dbVersion: 4.2
+      filename: "/etc/yum.repos.d/mongodb-org-{{dbVersion}}.repo"
+      yum: name="https://repo.mongodb.org/yum/redhat/{{ releasever }}/mongodb-org/4.2/x86_64/"
     - name: Checking if I can connect to the server.
       ping:
     - name: Installing MongoDB
