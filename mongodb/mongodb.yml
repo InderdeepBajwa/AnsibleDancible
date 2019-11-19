@@ -3,14 +3,14 @@
   vars:
     mongoDB_Port: 4230
 
-  - name: Adding MongoDB repository
-    vars:
-      releaseVer: 8
-      dbVersion: 4.2
-    yum_repository:
-      name: MongoDB repository
-      baseurl: "https://repo.mongodb.org/yum/redhat/{{ releaseVer }}/mongodb-org/{{dbVersion}}/x86_64/"
   tasks:
+    - name: Adding MongoDB repository
+      vars:
+        releaseVer: 8
+        dbVersion: 4.2
+      yum_repository:
+        name: MongoDB repository
+        baseurl: "https://repo.mongodb.org/yum/redhat/{{ releaseVer }}/mongodb-org/{{dbVersion}}/x86_64/"
     - name: Checking if I can connect to the server.
       ping:
     - name: Installing MongoDB
