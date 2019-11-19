@@ -4,11 +4,11 @@
     mongoDB_Port: 4230
 
   tasks:
+    - name: Checking if I can connect to the server.
+      ping:
     - name: Adding MongoDB repository for CentOS
       become: yes
       copy: src="mongorepo.repo" dest="/etc/yum.repos.d/mongodb-org-4.2.repo"
-    - name: Checking if I can connect to the server.
-      ping:
     - name: Installing MongoDB
       become: yes
       yum: name=mongodb-org state=present
