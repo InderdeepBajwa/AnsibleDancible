@@ -4,18 +4,13 @@
     mongoDB_Port: 4230
 
   tasks:
-    - name: Adding MongoDB repository
-      vars:
-        releaseVer: 8
-        dbVersion: 4.2
-      yum_repository:
-        name: MongoDB repository
-        baseurl: "https://repo.mongodb.org/yum/redhat/{{ releaseVer }}/mongodb-org/{{dbVersion}}/x86_64/"
+    - name: Adding MongoDB repository for CentOS
+      copy: src="mongorepo.repo"
     - name: Checking if I can connect to the server.
       ping:
     - name: Installing MongoDB
       become: yes
-      yum: name=mongodb-org
+      yum: name=mongodb-org state=present
 
       
 
