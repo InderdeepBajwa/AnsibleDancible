@@ -19,4 +19,4 @@
     - name: Installing MongoDB
       yum: 
         name: mongodb-org
-        state: present
+        state: latest
