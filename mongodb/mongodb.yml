@@ -10,10 +10,14 @@
       ping:
     #- name: Running a system update.
    #   yum: name=* state=latest
-    - name: Installing OpenSSL
+    - name: Installing OpenSSL Devel
       yum: 
         name: openssl-devel 
-        state: present
+        state: latest
+    - name: Installing
+      yum: 
+        name: openssl
+        state: latest
     - name: Adding MongoDB repository for CentOS
       copy: src="mongorepo.repo" dest="/etc/yum.repos.d/mongodb-org-4.2.repo"
     - name: Installing MongoDB
