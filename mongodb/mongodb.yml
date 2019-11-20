@@ -8,8 +8,8 @@
   tasks:
     - name: Checking if I can connect to the server.
       ping:
-    - name: Running a system update.
-      yum: name=* state=latest
+    #- name: Running a system update.
+   #   yum: name=* state=latest
     - name: Installing OpenSSL
       yum: 
         name: openssl-devel 
