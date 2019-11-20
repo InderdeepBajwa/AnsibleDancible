@@ -11,6 +11,3 @@
     - name: Installing MongoDB
       become: yes
       yum: name=mongodb-org state=present
-
-      
-
