@@ -8,16 +8,6 @@
   tasks:
     - name: Checking if I can connect to the server.
       ping:
-    #- name: Running a system update.
-   #   yum: name=* state=latest
-    - name: Installing OpenSSL Devel
-      yum: 
-        name: openssl-devel 
-        state: latest
-    - name: Installing
-      yum: 
-        name: openssl
-        state: latest
     - name: Adding MongoDB repository for CentOS
       yum_repository:
         name: MongoDB Repository

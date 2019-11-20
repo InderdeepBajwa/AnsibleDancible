@@ -1,0 +1,18 @@
+---
+- hosts: vm2
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: Checking if I can connect to the server.
+      ping:
+    - name: Stopping MongoDB service
+      service:
+        name: mongod
+        state: stopped
+    - name: Removing MongoDB packages
+      shell: sudo yum erase $(rpm -qa | grep mongodb-org)
+      
+    
+
+
