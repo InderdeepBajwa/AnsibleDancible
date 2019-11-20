@@ -11,8 +11,17 @@
         name: mongod
         state: stopped
     - name: Removing MongoDB packages
-      shell: sudo yum erase $(rpm -qa | grep mongodb-org)
+      yum:
+        name: mongodb-org
+        state: absent
+      notify:
+        - mongodb removed
+  
+  handlers:
+    - name: mongodb removed
+      ping:
       
+
     
 
 
