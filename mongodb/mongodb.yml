@@ -29,3 +29,14 @@
       yum: 
         name: mongodb-org
         state: latest
+      notify:
+        - start MongoDB
+
+      handlers:
+        - name: start MongoDB
+          service:
+            name: mongod
+            state: started
+          
+          
+        
