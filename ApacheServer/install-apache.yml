@@ -1,12 +1,12 @@
 ---
 - name: Install Apache
-  hosts: vm1
+  hosts: vm0
   become: yes
   tasks:
   - name: Installing the latest version of Apache
     yum: pkg=httpd state=latest
   - name: Enabling it on System boot
-    systemd: name=httpd enabled=yes
+    service: name:httpd enabled:yes
     notify:
     - start apache
 
