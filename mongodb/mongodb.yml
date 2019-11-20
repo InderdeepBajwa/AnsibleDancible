@@ -32,11 +32,11 @@
       notify:
         - start MongoDB
 
-      handlers:
-        - name: start MongoDB
-          service:
-            name: mongod
-            state: started
+  handlers:
+    - name: start MongoDB
+      service:
+        name: mongod
+        state: started
           
           
         
