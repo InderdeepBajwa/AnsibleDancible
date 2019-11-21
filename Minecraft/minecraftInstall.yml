@@ -19,7 +19,7 @@
       copy: src="download.py" dest="/home/vmadmin/Minecraft"
       when: minecraft.stat.exists == False 
     - name: Install minecraft server
-      script: "Minecraft/download.py"
+      script: "/home/vmadmin/Minecraft/download.py"
       args:
         executable: python3
     - name: Start minecraft server
