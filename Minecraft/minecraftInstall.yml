@@ -7,12 +7,13 @@
       ping:
     - name: Check if the minecraft download script exists
       stat:
-        path: /home/vm3/Minecraft/download.py
+        path: /home/vmadmin/Minecraft/download.py
       register: minecraft
     - name: Create the file, if it doesnt exist already
       file:
-        path: /home/vm3/Minecraft
+        path: /home/vmadmin/Minecraft
         state: touch
+        #shell: mkdir 
       when: minecraft.stat.exists == False 
     - name: Adding Minecraft download file to VM3
       copy: src="download.py" dest="/home/vm3/Minecraft"
