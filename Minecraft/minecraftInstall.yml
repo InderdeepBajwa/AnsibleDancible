@@ -12,14 +12,14 @@
     - name: Create the file, if it doesnt exist already
       file:
         path: /home/vmadmin/Minecraft
-        state: touch
+        state: directory
         #shell: mkdir 
       when: minecraft.stat.exists == False 
     - name: Adding Minecraft download file to VM3
       copy: src="download.py" dest="/home/vmadmin/Minecraft"
       when: minecraft.stat.exists == False 
     - name: Install minecraft server
-      script: "download.py"
+      script: "Minecraft/download.py"
       args:
         executable: python3
     - name: Start minecraft server
