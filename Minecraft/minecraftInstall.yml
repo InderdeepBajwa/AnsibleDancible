@@ -13,6 +13,8 @@
     - name: Install Python
       raw: yum -y install python3
       when: check_python.rc != 0
+    - name: Installing requests (pip library)
+      shell: pip3 install requests
     - name: Check if the minecraft download script exists
       stat:
         path: /home/vmadmin/Minecraft/download.py
