@@ -1,6 +1,6 @@
 
 # This Ansible playbook creates a CentOS virtual machine on Microsoft Azure
-
+---
 - name: Authenticating with Azure
   auth_source: credential_file # Alternative options: auto, cli, env, msi
 
