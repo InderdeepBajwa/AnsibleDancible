@@ -6,14 +6,14 @@
     - name: Checking if I can connect to the server.
       ping:
     - name: Check if the minecraft download script exists
-        stat:
-          path: /home/vm3/Minecraft/download.py
-        register: minecraft
+      stat:
+        path: /home/vm3/Minecraft/download.py
+      register: minecraft
     - name: Create the file, if it doesnt exist already
       file:
         path: /home/vm3/Minecraft
-        state: touch
-        when: minecraft.stat.exists == False 
+      state: touch
+      when: minecraft.stat.exists == False 
     - name: Adding Minecraft download file to VM3
       copy: src="download.py" dest="/home/vm3/Minecraft"
       when: minecraft.stat.exists == False 
@@ -23,4 +23,4 @@
         executable: python3
     - name: Start minecraft server
       shell: LD_LIBRARY_PATH=. ./bedrock_server
-
+ 
