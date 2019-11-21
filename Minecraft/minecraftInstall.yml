@@ -16,7 +16,7 @@
         #shell: mkdir 
       when: minecraft.stat.exists == False 
     - name: Adding Minecraft download file to VM3
-      copy: src="download.py" dest="/home/vm3/Minecraft"
+      copy: src="download.py" dest="/home/vmadmin/Minecraft"
       when: minecraft.stat.exists == False 
     - name: Install minecraft server
       script: "download.py"
