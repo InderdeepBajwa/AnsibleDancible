@@ -29,7 +29,7 @@
     - name: Install minecraft server
       script: "/home/vmadmin/Minecraft/download.py"
       args:
-        executable: python
+        executable: python3
     - name: Start minecraft server
       shell: LD_LIBRARY_PATH=. ./bedrock_server
  
