@@ -1,5 +1,5 @@
 ---
-- hosts: vm3
+- hosts: Minecraft-vm
   become: yes
   become_user: root
   tasks:
