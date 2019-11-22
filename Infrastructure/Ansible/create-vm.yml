@@ -1,6 +1,7 @@
 - name: Create Azure VM
   hosts: localhost
   connection: local
+  become: yes
   vars:
     resource_group: 'paychex'
   tasks:
