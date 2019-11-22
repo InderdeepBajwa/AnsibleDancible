@@ -89,3 +89,13 @@
         publisher: "{{ vm_image_publisher }}" #OpenLogic
         sku: "{{ vm_sku_version }}" # "7.5"
         version: latest
+    notify:
+      - start myVirtualMachinePlz
+  
+  handlers:
+    - name: start myVirtualMachinePlz
+      azure_rm_virtualmachine:
+        resource_group: "{{ resource_group }}"
+        name: "{{ instance_name }}-vm"
+        started: yes
+      
