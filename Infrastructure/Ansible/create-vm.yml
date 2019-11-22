@@ -2,7 +2,7 @@
   hosts: localhost
   connection: local
   vars:
-    resource_group: 'Paychex'
+    resource_group: 'paychex'
   tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
