@@ -1,0 +1,66 @@
+- name: Create Azure VM
+  hosts: localhost
+  connection: local
+  tasks:
+  - set_fact:
+    resource_group: 'Paychex'
+  - name: Create resource group
+    azure_rm_resourcegroup:
+      name: {{ resource_group }}
+      location: eastus
+  - name: Create virtual network
+    azure_rm_virtualnetwork:
+      resource_group: {{ resource_group }}
+      name: MongoDB-vnet
+      address_prefixes: "10.0.0.0/16"
+  - name: Add subnet
+    azure_rm_subnet:
+      resource_group: {{ resource_group }}
+      name: MongoDB-subnet
+      address_prefix: "10.0.1.0/24"
+      virtual_network: MongoDB-vnet
+  - name: Create public IP address
+    azure_rm_publicipaddress:
+      resource_group: {{ resource_group }}
+      allocation_method: Static
+      name: MongoDB-public-ip
+    register: output_ip_address
+  - name: Dump public IP for VM which will be created
+    debug:
+      msg: "The public IP is {{ output_ip_address.state.ip_address }}."
+  - name: Create Network Security Group that allows SSH
+    azure_rm_securitygroup:
+      resource_group: {{ resource_group }}
+      name: MongoDB-security-group
+      rules:
+        - name: SSH
+          protocol: Tcp
+          destination_port_range: 22
+          access: Allow
+          priority: 1001
+          direction: Inbound
+  - name: Create virtual network interface card
+    azure_rm_networkinterface:
+      resource_group: {{ resource_group }}
+      name: MongoDB-nic
+      virtual_network: MongoDB-vnet
+      subnet: MongoDB-subnet
+      public_ip_name: MongoDB-public-ip
+      security_group: Mongo-DB-security-group
+  - name: Create VM
+    azure_rm_virtualmachine:
+      resource_group: {{ resource_group }}
+      name: MongoDB-vm
+      vm_size: Standard_B2ms
+      admin_username: azureuser
+      ssh_password_enabled: true
+      admin_password: <admin password here> # Alternative: Set SSH key
+      #ssh_public_keys:
+       # - path: /home/azureuser/.ssh/authorized_keys
+        #  key_data: <your-key-data>
+      network_interfaces: MongoDB-nic
+      image:
+        offer: CentOS
+        publisher: OpenLogic
+        sku: '7.5'
+        version: latest
