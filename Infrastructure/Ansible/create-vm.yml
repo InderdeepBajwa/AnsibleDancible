@@ -79,10 +79,10 @@
        # - path: /home/azureuser/.ssh/authorized_keys
         #  key_data: <your-key-data>
       network_interfaces: "{{ instance_name }}-nic"
-# To get VM image other than CentOS, change the values below. 
+# To get CentOS VM, simply uncomment the values and get rid of all the variables.
 # More image offering can be found at: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage
       image:
-        offer: CentOS
-        publisher: OpenLogic
-        sku: '7.5'
+        offer: "{{ vm_image_offer}}" #CentOS
+        publisher: "{{ vm_image_provider }}" #OpenLogic
+        sku: "{{ vm_sku_version }}" # "7.5"
         version: latest
