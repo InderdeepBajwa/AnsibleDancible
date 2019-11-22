@@ -12,19 +12,19 @@
   - name: Create virtual network
     azure_rm_virtualnetwork:
       resource_group: "{{ resource_group }}"
-      name: MongoDB-vnet
+      name: "{{ instance_name }}-vnet"
       address_prefixes: "10.0.0.0/16"
   - name: Add subnet
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
-      name: MongoDB-subnet
+      name: "{{ instance_name }}-subnet"
       address_prefix: "10.0.1.0/24"
-      virtual_network: MongoDB-vnet
+      virtual_network: "{{ instance_name }}-vnet"
   - name: Create public IP address
     azure_rm_publicipaddress:
       resource_group: "{{ resource_group }}"
       allocation_method: Static
-      name: MongoDB-public-ip
+      name: "{{ instance_name }}-public-ip"
     register: output_ip_address
   - name: Dump public IP for VM which will be created
     debug:
@@ -32,7 +32,7 @@
   - name: Create Network Security Group that allows SSH
     azure_rm_securitygroup:
       resource_group: "{{ resource_group }}"
-      name: MongoDB-security-group
+      name: "{{ instance_name }}-security-group"
       rules:
         - name: SSH
           protocol: Tcp
@@ -43,23 +43,23 @@
   - name: Create virtual network interface card
     azure_rm_networkinterface:
       resource_group: "{{ resource_group }}"
-      name: MongoDB-nic
-      virtual_network: MongoDB-vnet
-      subnet: MongoDB-subnet
-      public_ip_name: MongoDB-public-ip
-      security_group: Mongo-DB-security-group
+      name: "{{ instance_name }}-nic"
+      virtual_network: "{{ instance_name }}-vnet"
+      subnet: "{{ instance_name }}-subnet"
+      public_ip_name: "{{ instance_name }}-public-ip"
+      security_group: "{{ instance_name }}-security-group"
   - name: Create VM
     azure_rm_virtualmachine:
       resource_group: "{{ resource_group }}"
-      name: MongoDB-vm
+      name: "{{ instance_name }}-vm"
       vm_size: Standard_B1ms
-      admin_username: azureuser
+      admin_username: vmadmin
       ssh_password_enabled: true
       admin_password: "{{ admin_password_here }}" # Alternative: Set SSH key
       #ssh_public_keys:
        # - path: /home/azureuser/.ssh/authorized_keys
         #  key_data: <your-key-data>
-      network_interfaces: MongoDB-nic
+      network_interfaces: "{{ instance_name }}-nic"
       image:
         offer: CentOS
         publisher: OpenLogic
