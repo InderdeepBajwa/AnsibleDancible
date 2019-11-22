@@ -52,7 +52,7 @@
     azure_rm_virtualmachine:
       resource_group: "{{ resource_group }}"
       name: MongoDB-vm
-      vm_size: Standard_B2ms
+      vm_size: Standard_B1ms
       admin_username: azureuser
       ssh_password_enabled: true
       admin_password: "{{ admin_password_here }}" # Alternative: Set SSH key
