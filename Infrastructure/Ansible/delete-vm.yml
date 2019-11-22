@@ -7,7 +7,7 @@
 #
 # Command to run the playbook:
 #     ansible-playbook delete-vm.yml --extra-vars "instance_name=MongoDB"
-- name: Create Azure VM
+- name: Delete Azure Virtual Machine
   hosts: localhost
   connection: local
   # Defining a global resource group name
