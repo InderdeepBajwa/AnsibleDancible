@@ -1,9 +1,9 @@
 - name: Create Azure VM
   hosts: localhost
   connection: local
+- set_fact:
+  resource_group: 'Paychex'
   tasks:
-  - set_fact:
-    resource_group: 'Paychex'
   - name: Create resource group
     azure_rm_resourcegroup:
       name: "{{ resource_group }}"
