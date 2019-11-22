@@ -55,7 +55,7 @@
       vm_size: Standard_B2ms
       admin_username: azureuser
       ssh_password_enabled: true
-      admin_password: <admin password here> # Alternative: Set SSH key
+      admin_password: "{{ admin_password_here }}" # Alternative: Set SSH key
       #ssh_public_keys:
        # - path: /home/azureuser/.ssh/authorized_keys
         #  key_data: <your-key-data>
