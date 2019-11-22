@@ -15,7 +15,7 @@
       when: check_python.rc != 0
       # TODO: Add check for requests
     - name: Installing requests (pip library)
-      shell: python3 -m pip install requests
+      shell: pip install requests
     - name: Check if the minecraft download script exists
       stat:
         path: /home/vmadmin/Minecraft/download.py
