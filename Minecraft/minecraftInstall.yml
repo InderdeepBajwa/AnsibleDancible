@@ -33,7 +33,7 @@
       shell: 
         cmd: pwd
     - name: Install minecraft server
-      script: "/home/vmadmin/Minecraft/download.py"
+      script: /home/vmadmin/Minecraft/download.py
       args:
         executable: python3
     - name: Start minecraft server
