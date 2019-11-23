@@ -23,27 +23,12 @@
         mode: 0771
         owner: 1000
         group: 1000
-        
-      #Download a the server files
-    - name: Download Minecraft zip files
-      become: yes
-      get_url:
-        url: https://minecraft.azureedge.net/bin-linux/bedrock-server-1.13.2.0.zip
-        dest: /home/vmadmin/Minecraft
-        mode: 0771
-        owner: 1000
-        group: 1000
-        
-    - name: Extract Minecraft zip into /home/vmadmin/Minecraft
-      unarchive:
-        src: bedrock-server-1.13.2.0.zip
-        dest: /home/vmadmin/Minecraft
           
-       #- name: Unarchive a file that needs to be downloaded (added in 2.0)
-       #   unarchive:
-       #     src: https://example.com/example.zip
-       #     dest: /usr/local/bin
-       #     remote_src: yes
+    - name: Unarchive a file that needs to be downloaded (added in 2.0)
+      unarchive:
+        src: https://minecraft.azureedge.net/bin-linux/bedrock-server-1.13.2.0.zip
+        dest: /home/vmadmin/Minecraft
+        remote_src: yes
 
 
     # TODO: Add check for requests
