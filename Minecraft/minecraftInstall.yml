@@ -31,7 +31,7 @@
         url: https://minecraft.azureedge.net/bin-linux/bedrock-server-1.13.2.0.zip
         dest: /home/vmadmin/Minecraft
         mode: 0771
-        checksum: sha512:2319f160ac69088c9420b1b6c999d576216c5a4b7034182e31572b2ece5f7bab3da049ee06f9b99b152da618a25f53df608c1eca23eab61b8ca9dbff24b78d6e
+        checksum: 2ac59a6ed35e06098bd4c9ebb4d9cc07e3864e69
         owner: 1000
         group: 1000
         
