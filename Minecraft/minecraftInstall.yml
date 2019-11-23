@@ -29,14 +29,14 @@
       become: yes
       get_url:
         url: https://minecraft.azureedge.net/bin-linux/bedrock-server-1.13.2.0.zip
-        dest: /home/vmadmin/Minecraft
+        dest: /tmp/bedrock-server-1.13.2.0.zip
         mode: 0771
         owner: 1000
         group: 1000
         
     - name: Extract Minecraft zip into /home/vmadmin/Minecraft
       unarchive:
-        src: /home/vmadmin/Minecraft/bedrock-server-1.13.2.0.zip
+        src: /tmp/bedrock-server-1.13.2.0.zip
         dest: /home/vmadmin/Minecraft
         remote_src: yes
         
