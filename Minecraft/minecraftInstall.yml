@@ -40,11 +40,11 @@
     
     #Unzip the minecraft server files
     - name: Unzipping minecraft files
-      raw: unzip /home/vmadmin/Minecraft/bedrock-server-1.13.2.0.zip 
+      raw: unzip /home/vmadmin/Minecraft/bedrock-server-1.13.2.0.zip -d ./Minecraft
 
     #Start the minecraft server   
     - name: Start minecraft server
-      shell: LD_LIBRARY_PATH=. ./bedrock_server
+      shell: LD_LIBRARY_PATH=. /home/vmadmin/Minecraft/bedrock_server
         
         
         
