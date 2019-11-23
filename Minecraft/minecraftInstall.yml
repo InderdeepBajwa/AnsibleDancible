@@ -33,7 +33,7 @@
       become: yes
       get_url:
         url: https://minecraft.azureedge.net/bin-linux/bedrock-server-1.13.2.0.zip
-        dest: /user/bedrock-server-1.13.2.0.zip
+        dest: /user/vmadmin/Minecraft/bedrock-server-1.13.2.0.zip
         mode: 0771
         owner: 1000
         group: 1000
