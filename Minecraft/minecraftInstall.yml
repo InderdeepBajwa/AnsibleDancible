@@ -14,6 +14,10 @@
       raw: yum -y install python3
       when: check_python.rc != 0
       
+    #Install unzip on server - I couldn't unarchive to work
+    - name: Installing unzip
+      raw: sudo apt install unzip
+      
       #Create a minecraft directory
     - name: Create a Directory /home/vmadmin/Minecraft
       become: yes
@@ -29,20 +33,26 @@
       become: yes
       get_url:
         url: https://minecraft.azureedge.net/bin-linux/bedrock-server-1.13.2.0.zip
-        dest: /tmp/bedrock-server-1.13.2.0.zip
+        dest: /user/bedrock-server-1.13.2.0.zip
         mode: 0771
         owner: 1000
         group: 1000
+    
+    #Unzip the minecraft server files
+    - name: Unzipping minecraft files
+      raw: unzip bedrock-server-1.13.2.0.zip
+
+    #Start the minecraft server   
+    - name: Start minecraft server
+      shell: LD_LIBRARY_PATH=. ./bedrock_server
         
-    - name: Extract Minecraft zip into /home/vmadmin/Minecraft
-      unarchive:
-        src: "/tmp/bedrock-server-1.13.2.0.zip"
-        dest: "/home/vmadmin/Minecraft"
-        remote_src: yes
         
-
-
-
+        
+#    - name: Extract Minecraft zip into /home/vmadmin/Minecraft
+#      unarchive:
+#        src: "/tmp/bedrock-server-1.13.2.0.zip"
+#        dest: "/home/vmadmin/Minecraft"
+#        remote_src: yes
     # TODO: Add check for requests
     #- name: Installing requests (pip library)
     #  shell: pip install requests
@@ -66,6 +76,4 @@
     #  script: /home/vmadmin/Minecraft/download.py
     #  args:
     #    executable: python3
-    - name: Start minecraft server
-      shell: LD_LIBRARY_PATH=. ./bedrock_server
  
