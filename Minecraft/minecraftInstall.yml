@@ -36,8 +36,8 @@
         
     - name: Extract Minecraft zip into /home/vmadmin/Minecraft
       unarchive:
-        src: /tmp/bedrock-server-1.13.2.0.zip
-        dest: /home/vmadmin/Minecraft
+        src: "/tmp/bedrock-server-1.13.2.0.zip"
+        dest: "/home/vmadmin/Minecraft"
         remote_src: yes
         
 
