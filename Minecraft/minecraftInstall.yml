@@ -38,6 +38,7 @@
       unarchive:
         src: /home/vmadmin/Minecraft/bedrock-server-1.13.2.0.zip
         dest: /home/vmadmin/Minecraft
+        remote_src: yes
         
 
 
