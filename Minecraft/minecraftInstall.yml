@@ -18,11 +18,11 @@
     - name: Create a Directory /home/vmadmin/Minecraft
       become: yes
         file:
-        path: /home/vmadmin/Minecraft
-        state: directory
-        mode: 0771
-        owner: vmadmin
-        group: vmadmin
+          path: /home/vmadmin/Minecraft
+          state: directory
+          mode: 0771
+          owner: vmadmin
+          group: vmadmin
         
       #Download a the server files
     - name: Download Minecraft zip files
