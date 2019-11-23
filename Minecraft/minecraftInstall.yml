@@ -21,8 +21,8 @@
         path: /home/vmadmin/Minecraft
         state: directory
         mode: 0771
-        owner: vmadmin
-        group: vmadmin
+        owner: 1000
+        group: 1000
         
       #Download a the server files
     - name: Download Minecraft zip files
@@ -32,8 +32,8 @@
         dest: /home/vmadmin/Minecraft
         mode: 0771
         checksum: sha512:2319f160ac69088c9420b1b6c999d576216c5a4b7034182e31572b2ece5f7bab3da049ee06f9b99b152da618a25f53df608c1eca23eab61b8ca9dbff24b78d6e
-        owner: vmadmin
-        group: vmadmin
+        owner: 1000
+        group: 1000
         
     - name: Extract Minecraft zip into /home/vmadmin/Minecraft
       unarchive:
