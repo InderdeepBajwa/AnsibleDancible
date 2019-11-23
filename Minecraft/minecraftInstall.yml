@@ -40,7 +40,7 @@
     
     #Unzip the minecraft server files
     - name: Unzipping minecraft files
-      raw: unzip bedrock-server-1.13.2.0.zip
+      raw: unzip /home/vmadmin/Minecraft/bedrock-server-1.13.2.0.zip 
 
     #Start the minecraft server   
     - name: Start minecraft server
