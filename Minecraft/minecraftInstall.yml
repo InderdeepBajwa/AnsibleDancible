@@ -36,7 +36,7 @@
         
     - name: Extract Minecraft zip into /home/vmadmin/Minecraft
       unarchive:
-        src: /home/vmadmin/Minecraft/bedrock-server-1.13.2.0.zip
+        src: bedrock-server-1.13.2.0.zip
         dest: /home/vmadmin/Minecraft
           
        #- name: Unarchive a file that needs to be downloaded (added in 2.0)
