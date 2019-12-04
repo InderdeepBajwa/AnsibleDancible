@@ -44,7 +44,7 @@
 
     #Start the minecraft server   
     - name: Start minecraft server
-      shell: export LD_LIBRARY_PATH="/home/vmadmin/Minecraft/bedrock_server"
+      shell: LD_LIBRARY_PATH=.; nohup  ./bedrock_server &
         
         
         
