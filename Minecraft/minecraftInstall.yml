@@ -80,7 +80,7 @@
     #Start the minecraft server   
     - name: Start minecraft server
       #raw: cd /home/vmadmin/Minecraft; LD_LIBRARY_PATH=. ./bedrock_server & disown
-      shell: "(cd /home/vmadmin/Minecraft; nohup ./start.sh & >/dev/null 2>&1 &)"
+      shell: "(cd /home/vmadmin/Minecraft; nohup ./start.sh </dev/null >/dev/null 2>&1 &)"
       async: 10
       poll: 0
       
