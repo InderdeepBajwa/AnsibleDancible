@@ -42,11 +42,26 @@
     - name: Unzipping minecraft files
       raw: unzip /home/vmadmin/Minecraft/bedrock-server-1.13.2.0.zip -d ./Minecraft
 
+
+    #Check for minecraft start script
+    - name: Check for start script
+      stat:
+        path: /home/vmadmin/Minecraft/start.sh
+      register: Minecraft_start_script
+
+
+    #Copy the start script over to the server
+    - name: Copying start server script
+      copy: src="start.sh" dest="/home/vmadmin/Minecraft/"
+      when: Minecraft_start_script.stat.exists == False 
+
+
     #Start the minecraft server   
     - name: Start minecraft server
-      raw: cd /home/vmadmin/Minecraft; LD_LIBRARY_PATH=. ./bedrock_server & disown
-        
-        
+      #raw: cd /home/vmadmin/Minecraft; LD_LIBRARY_PATH=. ./bedrock_server & disown
+      shell: "(cd /home/vmadmin/Minecraft; nohup ./start.sh & >/dev/null 2>&1 &)"
+      async: 10
+      poll: 0
         
 #    - name: Extract Minecraft zip into /home/vmadmin/Minecraft
 #      unarchive:
