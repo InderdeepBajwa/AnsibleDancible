@@ -43,7 +43,7 @@
     - name: Downloading Minecraft zip files
       become: yes
       get_url:
-        url: https://minecraft.azureedge.net/bin-linux/bedrock-server-1.13.2.0.zip
+        url: https://minecraft.azureedge.net/bin-linux/bedrock-server-1.13.3.0.zip
         dest: /home/vmadmin/Minecraft
         mode: 0771
         owner: 1000
@@ -60,7 +60,7 @@
     
     #Unzip the minecraft server files if not already installed
     - name: Unzipping minecraft files
-      raw: unzip /home/vmadmin/Minecraft/bedrock-server-1.13.2.0.zip -d ./Minecraft
+      raw: unzip /home/vmadmin/Minecraft/bedrock-server-1.13.3.0.zip -d ./Minecraft
       when: Minecraft_bedrock_server_exec.stat.exists == False 
 
 
