@@ -77,10 +77,10 @@
       when: Minecraft_start_script.stat.exists == False 
 
     - name: CHMOD files
-      shell: cd /home/vmadmin; find * | sudo xargs chmod 771
+      raw: cd /home/vmadmin; find * | sudo xargs chmod 771
       
     - name: CHMOD files
-      shell: cd /home/vmadmin; find * | sudo xargs chown 1000 -f
+      raw: cd /home/vmadmin; find * | sudo xargs chown 1000 -f
       
 
     #Start the minecraft server   
